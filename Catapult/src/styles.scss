@@ -1,2 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+
+.app-container {
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+}
+
+footer {
+    background: #F0F0F0;
+    bottom: 0px;
+    box-shadow: 0 0 5px #888888;
+    padding: 2rem 0 1.5rem;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
