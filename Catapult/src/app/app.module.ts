@@ -13,8 +13,8 @@ import { ResourceModule } from './resources/resource.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    ResourceModule
+    ResourceModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
