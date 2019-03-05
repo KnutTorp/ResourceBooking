@@ -1,0 +1,73 @@
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+
+  <div class="card-body"
+       *ngIf="resource">
+
+    <div class="row">
+
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-3">NAvn:</div>
+          <div class="col-md-6">{{resource.name}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">Kode:</div>
+          <div class="col-md-6">{{resource.code}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">Beskrivelse:</div>
+          <div class="col-md-6">{{resource.description}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">Pris:</div>
+          <div class="col-md-6">{{resource.price|currency:"Kr":"symbol"}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">5 stjerners karrakter:</div>
+          <div class="col-md-6">
+            <crb-star [rating]="resource.starRating">
+            </crb-star>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">Kategori:</div>
+          <div class="col-md-6">{{resource.category}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">Merkelapp:</div>
+          <div class="col-md-6">{{resource.tags}}</div>
+        </div>
+      </div>
+
+      <div class="col-md-4"
+           *ngIf="resource.imageUrl">
+        <img class="center-block img-responsive"
+             [style.height.px]="150"
+             [style.margin.px]="2"
+             [src]="resource.imageUrl"
+             [title]="resource.name">
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <button class="btn btn-outline-secondary mr-3"
+                style="width:80px">
+          <i class="fa fa-chevron-left"></i> Back
+        </button>
+        <button class="btn btn-outline-primary"
+                style="width:80px">
+          Edit
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="alert alert-danger"
+     *ngIf="errorMessage">{{errorMessage}}
+</div>

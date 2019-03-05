@@ -9,6 +9,9 @@ export interface IResource {
     imageUrl: string;
     code: string;
     price: number;
+    starRating: number;
+    category: string;
+    tags: string[];
     //catapultCenterId: number;
     //catapultCenterUrl: string;
     //isSelectable: boolean;
