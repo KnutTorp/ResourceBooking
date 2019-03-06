@@ -1,23 +1,28 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { ResourseListComponent } from './resourse-list.component';
 
-// const routes: Routes = [
-//   { path: 'resources', component: ResourseListComponent }
-// ];
+import { ResourceListComponent } from './list/resource-list.component';
+import { ResourceDetailComponent } from './details/resource-detail.component';
+import { ResourceEditComponent } from './edit/resource-edit.component';
+
+import { SharedModule } from '../shared/shared.module';
+
+
+const routes: Routes = [
+  { path: 'resources', component: ResourceListComponent },
+  { path: 'resources/:id', component: ResourceDetailComponent },
+  { path: 'resources/:id/edit', component: ResourceEditComponent },
+];
 
 @NgModule({
-    imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule.forChild([
-      { path: 'resources', component: ResourseListComponent }
-    ])
+  imports: [
+    SharedModule,
+    RouterModule.forChild(routes)
   ],
   declarations: [
-    ResourseListComponent
+    ResourceListComponent,
+    ResourceDetailComponent,
+    ResourceEditComponent
   ]
 })
 export class ResourceModule { }
