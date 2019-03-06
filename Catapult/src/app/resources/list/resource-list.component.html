@@ -42,7 +42,7 @@
               <td>{{resource.price | currency: 'NOK': 'symbol-narrow':'1.2-2' }}</td>
               <td><crb-star [rating]='resource.starRating' (ratingClicked)='onRatingClicked($event)'></crb-star></td>
               <td>
-                <button class="btn btn-outline-primary btn-sm">Edit</button>
+                <button class="btn btn-outline-primary btn-sm" [routerLink]="['/resources', resource.id, 'edit']">Endre</button>
               </td>
             </tr>
           </tbody>
