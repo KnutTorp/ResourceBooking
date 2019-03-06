@@ -1,3 +1,103 @@
-<p>
-  edit works!
-</p>
+<br>
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+
+  <div class="card-body"
+       *ngIf="resource">
+    <form novalidate
+          #resourceForm="ngForm">
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label"
+               for="resourceNameId">Navn</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="resourceNameId"
+                 type="text"
+                 placeholder="Navn (obligatorisk)"
+                 required
+                 minlength="3"
+                 [(ngModel)]=resource.name
+                 name="resourceName"
+                 #resourceNameVar="ngModel"
+                 [ngClass]="{'is-invalid': (resourceNameVar.touched || resourceNameVar.dirty) && !resourceNameVar.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="resourceNameVar.errors?.required">
+              Resursnavn er obligatorisk.
+            </span>
+            <span *ngIf="resourceNameVar.errors?.minlength">
+              Resursnavn må være minst tre tegn.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label"
+               for="resourceCodeId">Kode</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="resourceCodeId"
+                 type="text"
+                 placeholder="Kode (obligatorisk)"
+                 required
+                 [(ngModel)]=resource.code
+                 name="resourceCode"
+                 #resourceCodeVar="ngModel"
+                 [ngClass]="{'is-invalid': (resourceCodeVar.touched || resourceCodeVar.dirty) && !resourceCodeVar.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="resourceCodeVar.errors?.required">
+              Resurskode er obligatorisk.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label"
+               for="descriptionId">Beskrivelse</label>
+        <div class="col-md-8">
+          <textarea class="form-control"
+                    id="descriptionId"
+                    placeholder="Beskrivelse"
+                    rows=3
+                    [(ngModel)]=resource.description
+                    name="description"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <div class="col-md-4">
+          <button class="btn btn-primary mr-3"
+                  style="width:80px"
+                  type="button"
+                  [title]="resourceForm.valid ? 'Lagre' : 'Utilgjengelig intil skjemaet er gyldig.'"
+                  [disabled]="!resourceForm.valid"
+                  (click)="saveResource()">
+            Lagre
+          </button>
+          <button class="btn btn-outline-secondary mr-3"
+                  style="width:80px"
+                  type="button"
+                  title="Cancel your edits"
+                  [routerLink]="['/resources']">
+            Avbryt
+          </button>
+          <button class="btn btn-outline-warning"
+                  style="width:80px"
+                  type="button"
+                  title="Delete this resource"
+                  (click)="deleteResource()">
+            Slett
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="alert alert-danger"
+     *ngIf="errorMessage">{{errorMessage}}
+</div>

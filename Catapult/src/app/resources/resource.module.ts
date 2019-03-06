@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { ResourceListComponent } from './list/resource-list.component';
 import { ResourceDetailComponent } from './details/resource-detail.component';
 import { ResourceEditComponent } from './edit/resource-edit.component';
+
 import { SharedModule } from '../shared/shared.module';
 
 
