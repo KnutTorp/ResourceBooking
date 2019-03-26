@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IResource } from 'src/app/domain/resource';
 import { ResourceService } from '../resource.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   templateUrl: './resource-list.component.html',
@@ -25,9 +26,13 @@ export class ResourceListComponent implements OnInit {
   filteredResources: IResource[] = [];
   resources: IResource[] = [];
 
-  constructor(private resourceService: ResourceService) { }
+  constructor(private resourceService: ResourceService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    // reading query parameters
+    this.listFilter = this.route.snapshot.queryParamMap.get('filterBy')  || '';
+    this.showImage = this.route.snapshot.queryParamMap.get('showImage') === 'true';
+
     this.resourceService.getResources().subscribe(
       resources => {
         this.resources = resources;

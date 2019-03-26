@@ -12,6 +12,7 @@ export class ResourceDetailComponent implements OnInit {
   pageTitle = 'Resurs detaljer';
   resource: IResource;
   errorMessage: string;
+  qParams = [];
 
   constructor(private resourceService: ResourceService, private route: ActivatedRoute) {
    }
