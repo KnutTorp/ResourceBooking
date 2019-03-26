@@ -32,15 +32,20 @@
           <tbody>
             <tr *ngFor='let resource of filteredResources'>
               <td>
-                <img *ngIf='showImage' [src]='resource.imageUrl' [title]='resource.name'
-                  [style.width.px]='imageWidth' [style.margin.px]='imageMargin'></td>
-              <td><a [routerLink]="['/resources', resource.id]">{{resource.name}}</a></td>
+                <img *ngIf='showImage' [src]='resource.imageUrl' [title]='resource.name' [style.width.px]='imageWidth'
+                  [style.margin.px]='imageMargin'></td>
+              <td>
+                <a [routerLink]="['/resources', resource.id]"
+                    [queryParams]="{filterBy: listFilter, showImage: showImage}">
+                  {{resource.name}}</a></td>
               <td>{{resource.code}}</td>
               <!-- <td>{{resource.code | lowercase | convertToSpaces: '-'}}</td> -->
               <td>{{resource.description}}</td>
               <!-- <td>{{resource.price}}</td> -->
               <td>{{resource.price | currency: 'NOK': 'symbol-narrow':'1.2-2' }}</td>
-              <td><crb-star [rating]='resource.starRating' (ratingClicked)='onRatingClicked($event)'></crb-star></td>
+              <td>
+                <crb-star [rating]='resource.starRating' (ratingClicked)='onRatingClicked($event)'></crb-star>
+              </td>
               <td>
                 <button class="btn btn-outline-primary btn-sm" [routerLink]="['/resources', resource.id, 'edit']">Endre</button>
               </td>

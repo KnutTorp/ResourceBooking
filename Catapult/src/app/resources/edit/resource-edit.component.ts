@@ -26,9 +26,9 @@ export class ResourceEditComponent implements OnInit {
         const id = +params.get('id');
         this.getResource(id);
       });
-    }
+  }
 
-    getResource(id: number): void {
+  getResource(id: number): void {
     this.resourceService.getResource(id)
       .subscribe(
         (resource: IResource) => this.onResourceRetrieved(resource),
